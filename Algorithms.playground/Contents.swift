@@ -1,25 +1,16 @@
 import UIKit
 
-func binarySearch(array: [Int], item: Int) {
-    var lowValue = 0
-    var highValue = array.count
+let numbers = [4, 3, 2, 1]
+
+func findSmallest(numbers: [Int]) -> Int {
+    var smallestValue = numbers[0]
     
-    while lowValue <= highValue { // Пока эта часть не сократится до одного эnемента...
-        let midValue = (lowValue + highValue) / 2
-        let guessValue = array[midValue]
-        
-        if guessValue == item {
-            midValue
-        }
-        
-        if guessValue > item {
-            highValue = midValue - 1
-        } else {
-            lowValue = midValue + 1
+    for number in 1..<numbers.count {
+        if numbers[number] < smallestValue {
+            smallestValue = numbers[number]
         }
     }
+    return smallestValue
 }
 
-let numbers = Array(1...240_000)
-
-binarySearch(array: numbers, item: 2)
+print(findSmallest(numbers: numbers))
